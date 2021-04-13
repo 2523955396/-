@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="5dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/gridview_hb"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:background="@drawable/cisha"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    >
+                    <TextView
+                        android:id="@+id/gridview_hz"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BD蓝光"
+                        android:textColor="@color/white"
+                        android:layout_alignParentRight="true"
+                        android:background="#66000000"
+                        android:textSize="12sp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        ></TextView>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                >
+                <TextView
+                    android:id="@+id/gridview_mc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="刺杀小说家"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    ></TextView>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

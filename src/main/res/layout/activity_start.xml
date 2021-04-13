@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".startActivity"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp">
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logo"
+                ></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="焕奇视界|看你所想"
+                    android:textSize="15sp"
+                    ></TextView>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/start_update"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tmlogo"
+                android:layout_marginTop="10dp"
+                ></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="焕 视"
+                    android:textSize="18sp"
+
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="版本更新"
+                    android:layout_marginTop="5dp"
+                    android:textSize="15sp"
+                    ></TextView>
+
+            </LinearLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:scrollbars="none"
+                >
+
+                <TextView
+                    android:id="@+id/start_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    ></TextView>
+            </ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="-40dp"
+                >
+                <TextView
+                    android:id="@+id/start_update1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="继续使用"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    ></TextView>
+                <TextView
+                    android:id="@+id/start_update2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="立即更新"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    ></TextView>
+            </LinearLayout>
+            <ProgressBar
+                android:id="@+id/start_jindu"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="-50dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                ></ProgressBar>
+
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

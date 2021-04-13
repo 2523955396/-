@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:id="@+id/homeone_biglogo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:background="#40000000"
+
+                >
+                <TextView
+                    android:id="@+id/homeone_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="猫和老鼠"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:paddingRight="10dp"
+                    android:gravity="right"
+                    ></TextView>
+                <TextView
+                    android:id="@+id/homeone_daoyan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="导演:蒂姆·斯托瑞 "
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:paddingRight="10dp"
+                    android:gravity="right"
+                    ></TextView>
+
+
+            </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+</RelativeLayout>
