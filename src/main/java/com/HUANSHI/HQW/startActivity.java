@@ -164,7 +164,7 @@ TextView update2;
                         startActivity(intent);
                         finish();
                     }
-                },2000);
+                },100);
 
             }
 

@@ -124,6 +124,7 @@ public class Video_Activity extends AppCompatActivity {
                         juji.jujiname=jujiname;
                         juji.href=href;
                         jujiList.add(juji);
+                        System.out.println(href);
                     }
                     handler.sendEmptyMessage(0);
 

@@ -7,7 +7,9 @@
     tools:context=".Video_Activity"
     android:background="@color/white"
     android:layoutAnimation="@anim/videoi"
+    android:orientation="vertical"
     >
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="230dp">
@@ -16,6 +18,115 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         ></com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer>
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="刺杀小说家"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    ></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:text="硬解"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#A51280"
+                    android:layout_marginRight="10dp"
+                    ></TextView>
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:text="投屏"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#EC34BE"
+                    ></TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="2001|日本|动漫"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                ></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="导演:田崎龙太"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                ></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="主演:贺集利树，要润，友井雄亮，秋山莉奈，升毅"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                ></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="剧情:香港某处发生爆炸案，前拆弹专家潘乘风（刘德华 饰）因昏迷于现场，他意外陷入爆炸案，苏醒后的潘乘风只能一边逃亡一边查明真相，他被同为拆弹专家、好友兼同事的董卓文（刘青云 饰）追捕，但同时又被反恐特勤队督察，同时也是潘乘风的前女友庞玲（倪妮 饰）保护，三人的关系十分错综复杂，他们两人给潘乘风讲述了两段截然不同的经历。有计划的爆炸案接二连三发生，真相却越来越扑朔迷离。潘乘风在执行任务时失去一条腿，对拆弹工作带来了职业冲击。虽然潘乘风自嘲为“最有型的拆弹专家”，但同为拆弹专家的董卓文对他“以前的阿风，为了救人命都"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:lines="3"
+                android:ellipsize="end"
+                ></TextView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
 </LinearLayout>
 
 </LinearLayout>
