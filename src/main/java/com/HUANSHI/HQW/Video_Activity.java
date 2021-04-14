@@ -8,9 +8,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
@@ -26,11 +29,13 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Video_Activity extends AppCompatActivity {
+import static java.lang.Thread.MAX_PRIORITY;
+
+public class Video_Activity extends AppCompatActivity implements View.OnClickListener {
     StandardGSYVideoPlayer videoPlayer;
     OrientationUtils orientationUtils;
     List<juji> jujiList;
-
+    String id;
     String name;
     String daoyan;
     String yanyuan;
@@ -40,6 +45,18 @@ public class Video_Activity extends AppCompatActivity {
     String leibie;
     String logo;
     String jiesao;
+
+    GridView gridView;
+    JUJIGridview jujiGridview;
+
+    TextView video_name;
+    TextView video_fenlei;
+    TextView video_daoyan;
+    TextView video_zhuyan;
+    TextView video_juqing;
+
+    Boolean juqingi=false;
+
     Handler handler=new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -55,15 +72,42 @@ public class Video_Activity extends AppCompatActivity {
 //        getWindow().setStatusBarColor(getResources().getColor(android.R.color.white));//设置要显示的颜色（Color.TRANSPARENT为透明）
 //        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-        String id=getIntent().getStringExtra("userid");
-        videoPlayer=findViewById(R.id.videonew);
-        jujiList=new ArrayList<juji>();
+       find();
         url(id);
         urll(id);
         qp();
 
     }
 
+    public void find(){
+        id=getIntent().getStringExtra("userid");
+        videoPlayer=findViewById(R.id.videonew);
+        gridView=findViewById(R.id.gridview_juji);
+        jujiList=new ArrayList<juji>();
+        jujiGridview=new JUJIGridview(this,jujiList,videoPlayer);
+
+        video_name=findViewById(R.id.video_name);
+        video_fenlei=findViewById(R.id.video_fenlei);
+        video_daoyan=findViewById(R.id.video_daoyan);
+        video_zhuyan=findViewById(R.id.video_zhuyan);
+        video_juqing=findViewById(R.id.video_juqing);
+        video_juqing.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.video_juqing:
+                if (juqingi==false){
+                    video_juqing.setLines(3);
+                    juqingi=true;
+                }else {
+                    video_juqing.setLines(2);
+                    juqingi=false;
+                }
+                break;
+        }
+    }
 
     public void url(String id){
         new Thread(){
@@ -92,6 +136,19 @@ public class Video_Activity extends AppCompatActivity {
                         logo=jsonObject.getString("logo");
                         jiesao=jsonObject.getString("介绍");
                     }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            video_name.setText(name);
+                            video_fenlei.setText(year+"|"+guojia+"|"+leibie);
+                            video_daoyan.setText("导演:"+daoyan);
+                            video_zhuyan.setText("主演"+yanyuan);
+                            video_juqing.setText("剧情:"+jianjie);
+                            video_name.setSelected(true);
+                            video_daoyan.setSelected(true);
+                            video_zhuyan.setSelected(true);
+                        }
+                    });
 
                 }catch (Exception v){
 
@@ -127,6 +184,12 @@ public class Video_Activity extends AppCompatActivity {
                         System.out.println(href);
                     }
                     handler.sendEmptyMessage(0);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            gridView.setAdapter(jujiGridview);
+                        }
+                    });
 
                 }catch (Exception v){
 
@@ -135,6 +198,13 @@ public class Video_Activity extends AppCompatActivity {
         }.start();
     }
 public void qp(){
+        videoPlayer.getBackButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GSYVideoManager.releaseAllVideos();
+                finish();
+            }
+        });
     videoPlayer.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -152,6 +222,7 @@ public void qp(){
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK &&event.getRepeatCount()==0){
             GSYVideoManager.releaseAllVideos();
+            finish();
 //            videoPlayer.clearCurrentCache();//清理缓存
         }
         return super.onKeyDown(keyCode, event);

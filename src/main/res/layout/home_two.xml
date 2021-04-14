@@ -15,6 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layoutAnimation="@anim/nimation"
+        android:horizontalSpacing="10dp"
+        android:scrollbars="none"
         ></GridView>
     <com.scwang.smart.refresh.footer.ClassicsFooter
         android:layout_width="match_parent"
