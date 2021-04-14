@@ -142,7 +142,7 @@ public class Video_Activity extends AppCompatActivity implements View.OnClickLis
                             video_name.setText(name);
                             video_fenlei.setText(year+"|"+guojia+"|"+leibie);
                             video_daoyan.setText("导演:"+daoyan);
-                            video_zhuyan.setText("主演"+yanyuan);
+                            video_zhuyan.setText("主演:"+yanyuan);
                             video_juqing.setText("剧情:"+jianjie);
                             video_name.setSelected(true);
                             video_daoyan.setSelected(true);
