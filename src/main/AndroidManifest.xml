@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".Video_Activity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             ></activity>
         <provider
             android:name="androidx.core.content.FileProvider"

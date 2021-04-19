@@ -54,35 +54,7 @@
                     android:marqueeRepeatLimit="marquee_forever"
                     ></TextView>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="right"
-                android:orientation="horizontal"
-                >
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:text="硬解"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:background="#A51280"
-                    android:layout_marginRight="10dp"
-                    ></TextView>
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:text="投屏"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:background="#EC34BE"
-                    ></TextView>
-            </LinearLayout>
+
 
         </LinearLayout>
         <LinearLayout

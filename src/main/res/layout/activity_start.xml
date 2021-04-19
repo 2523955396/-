@@ -11,38 +11,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:gravity="center"
         >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="50dp">
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_alignParentBottom="true"
-                android:orientation="horizontal"
-                android:gravity="center"
-                >
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/logo"
-                ></ImageView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="焕奇视界|看你所想"
-                    android:textSize="15sp"
-                    ></TextView>
-            </LinearLayout>
-
-        </RelativeLayout>
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/tmlogo"
+            ></ImageView>
 
     </LinearLayout>
 
@@ -79,14 +54,16 @@
                     android:layout_height="wrap_content"
                     android:text="焕 视"
                     android:textSize="18sp"
-
+                    android:textColor="@color/black"
                     ></TextView>
                 <TextView
+                    android:id="@+id/start_banben"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="版本更新"
                     android:layout_marginTop="5dp"
                     android:textSize="15sp"
+                    android:textColor="@color/black"
                     ></TextView>
 
             </LinearLayout>
@@ -104,6 +81,8 @@
                     android:text=""
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
                     ></TextView>
             </ScrollView>
             <LinearLayout

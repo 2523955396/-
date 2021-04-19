@@ -3,20 +3,27 @@ package com.HUANSHI.HQW;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.HUANSHI.HQW.BaseAdapter.JUJIGridview;
+import com.HUANSHI.HQW.List.juji;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
+import com.shuyu.gsyvideoplayer.cache.CacheFactory;
+import com.shuyu.gsyvideoplayer.cache.ProxyCacheManager;
+import com.shuyu.gsyvideoplayer.player.IjkPlayerManager;
+import com.shuyu.gsyvideoplayer.player.PlayerFactory;
+import com.shuyu.gsyvideoplayer.player.SystemPlayerManager;
+import com.shuyu.gsyvideoplayer.utils.GSYVideoType;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
@@ -29,7 +36,9 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Thread.MAX_PRIORITY;
+import tv.danmaku.ijk.media.exo2.Exo2PlayerManager;
+import tv.danmaku.ijk.media.exo2.ExoPlayerCacheManager;
+
 
 public class Video_Activity extends AppCompatActivity implements View.OnClickListener {
     StandardGSYVideoPlayer videoPlayer;
@@ -56,27 +65,38 @@ public class Video_Activity extends AppCompatActivity implements View.OnClickLis
     TextView video_juqing;
 
     Boolean juqingi=false;
+    NEIHE neihe;
 
     Handler handler=new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
+            neihe.neihe();
             videoPlayer.setUpLazy(jujiList.get(0).href, true, null, null, name);
         }
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.BLACK);
+        //状态栏中的文字颜色和图标颜色，需要android系统6.0以上，而且目前只有一种可以修改（一种是深色，一种是浅色即白色）
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //修改为深色，因为我们把状态栏的背景色修改为主题色白色，默认的文字及图标颜色为白色，导致看不到了。
+//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//状态栏黑色字体
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);//状态栏白色字体
+        }
         setContentView(R.layout.activity_video);
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 //        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //        getWindow().setStatusBarColor(getResources().getColor(android.R.color.white));//设置要显示的颜色（Color.TRANSPARENT为透明）
 //        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
-       find();
+        neihe= new NEIHE(this);
+        find();
         url(id);
         urll(id);
         qp();
-
     }
 
     public void find(){
@@ -93,7 +113,6 @@ public class Video_Activity extends AppCompatActivity implements View.OnClickLis
         video_juqing=findViewById(R.id.video_juqing);
         video_juqing.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -109,12 +128,15 @@ public class Video_Activity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+
+
+
     public void url(String id){
         new Thread(){
             @Override
             public void run() {
                 try {
-                    URL url=new URL("https://hs.51huanqi.cn/sousuo.php?userid="+id);
+                    URL url=new URL("https://hs.51huanqi.cn/sousuomax.php?userid="+id);
                     URLConnection urlConnection=url.openConnection();
                     InputStream inputStream=urlConnection.getInputStream();
                     String jsoni="";
@@ -156,7 +178,6 @@ public class Video_Activity extends AppCompatActivity implements View.OnClickLis
             }
         }.start();
     }
-
     public void urll(String id){
         new Thread(){
             @Override
@@ -217,7 +238,6 @@ public void qp(){
         }
     });
 }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK &&event.getRepeatCount()==0){

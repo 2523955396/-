@@ -1,27 +1,23 @@
 package com.HUANSHI.HQW;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import org.json.JSONArray;
@@ -45,6 +41,7 @@ LinearLayout update;
 ProgressBar jindu;
 TextView update1;
 TextView update2;
+    TextView banben;
 
 
     String name;
@@ -83,6 +80,15 @@ TextView update2;
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        window.setStatusBarColor(Color.WHITE);
+        //状态栏中的文字颜色和图标颜色，需要android系统6.0以上，而且目前只有一种可以修改（一种是深色，一种是浅色即白色）
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //修改为深色，因为我们把状态栏的背景色修改为主题色白色，默认的文字及图标颜色为白色，导致看不到了。
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         setContentView(R.layout.activity_start);
 
         PermissionGen.with(this)
@@ -98,6 +104,7 @@ TextView update2;
 
 
         update=findViewById(R.id.start_update);
+        banben=findViewById(R.id.start_banben);
         text=findViewById(R.id.start_text);
         jindu=findViewById(R.id.start_jindu);
         update1=findViewById(R.id.start_update1);
@@ -137,7 +144,7 @@ TextView update2;
                 vv=jsonObject.getInt("版本次数");
                 texti=jsonObject.getString("更新内容");
                 down=jsonObject.getString("下载地址");
-                datetime=jsonObject.getString("更新内容");
+                datetime=jsonObject.getString("更新时间");
                 System.out.println(name+V+vv+texti+down+datetime);
             }
             PackageInfo packageInfo= startActivity.this.getApplicationContext().getPackageManager().getPackageInfo(startActivity.this.getPackageName(),0);
@@ -150,6 +157,7 @@ TextView update2;
                     public void run() {
                         update.setVisibility(View.VISIBLE);
                         text.setText(texti);
+                        banben.setText("版本更新:"+V);
 
                     }
                 });
@@ -164,7 +172,7 @@ TextView update2;
                         startActivity(intent);
                         finish();
                     }
-                },100);
+                },1000);
 
             }
 
@@ -175,7 +183,6 @@ TextView update2;
         }.start();
 
     }
-    downloadx downloadx;
     @Override
     public void onClick(View v) {
         switch (v.getId()){
